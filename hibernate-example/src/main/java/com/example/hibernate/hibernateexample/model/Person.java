@@ -15,8 +15,19 @@ public class Person {
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name="name")
     private String name;
+    @Column(name="country")
     private String country;
+
+    public Person() {
+    }
+
+    public Person(int id, String name, String country) {
+        this.id = id;
+        this.name = name;
+        this.country = country;
+    }
 
     public int getId() {
         return this.id;

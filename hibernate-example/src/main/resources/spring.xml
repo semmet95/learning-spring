@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="https://www.springframework.org/schema/beans"
-	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:aop="https://www.springframework.org/schema/aop"
-	xmlns:tx="https://www.springframework.org/schema/tx"
-	xsi:schemaLocation="https://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		https://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-		https://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/TestDB" />
-		<property name="username" value="pankaj" />
-		<property name="password" value="pankaj123" />
+		<property name="username" value="sa" />
+		<property name="password" value="Welcome@123" />
 	</bean>
 
 <!-- Hibernate 3 Annotation SessionFactory Bean definition-->
@@ -20,7 +19,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>com.journaldev.model.Person</value>
+				<value>com.example.hibernate.hibernateexample.model.Person</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -32,7 +31,7 @@
 		</property>
 	</bean>
 	
-	<bean id="personDAO" class="com.journaldev.dao.PersonDAOImpl">
+	<bean id="personDAO" class="com.example.hibernate.hibernateexample.dao.PersonDAOImpl">
 		<property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
 	</bean>
 </beans>
